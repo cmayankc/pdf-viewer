@@ -1,7 +1,13 @@
+// onload handler
 window.onload = function () {
+  // html should have a div with id as 'container'
   renderPDF('sample.pdf', document.getElementById('container'));
 }
+
+// renders PDF from a url
+// generated canvas elements for each page in the pdf
 function renderPDF(url, container, options) {
+  // any of the pdf.js options can be passes here.
   var options = options || { scale: 1 };
       
   function renderPage(page) {
@@ -29,6 +35,8 @@ function renderPDF(url, container, options) {
   pdfjsLib.getDocument(url).then(renderPages);
 }
 
+// downloads the pdf from html
+// created new page in the pdf for event canvas element
 function downloadPDF() {
   var pdf = new jsPDF();
   var canvas = document.getElementsByTagName('canvas');
